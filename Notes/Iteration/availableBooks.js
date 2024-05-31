@@ -38,9 +38,11 @@ const books = [
   },
 ];
 
+const filterBooks = (books,isAvailable)=> books.filter(book => book.available === isAvailable);
+
 function App() {
-  const availableBooks = books.filter((book) => book.available);
-  const unavailableBooks = books.filter((book) => !book.available);
+  const availableBooks = filterBooks(books,true);
+  const unavailableBooks = filterBooks(books,false);
   return (
     <>
       <div>
@@ -69,11 +71,11 @@ function BookTable({ books }) {
         </tr>
       </thead>
       <tbody>
-        {books.map((book) => (
-          <tr key={book.id} className="cart-row">
-            <td>{book.title}</td>
-            <td>{book.author}</td>
-            <td>{book.genre}</td>
+        {books.map({id,title,author,genre} => (
+          <tr key={id} className="cart-row">
+            <td>{title}</td>
+            <td>{author}</td>
+            <td>{genre}</td>
           </tr>
         ))}
       </tbody>
