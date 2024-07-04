@@ -8,6 +8,11 @@ function UselessMachine() {
   const inputRef = React.useRef();
 
   React.useEffect(() => {
+    // Ignore renders that happens because the checkbox is flipped on
+    if(isOn) {
+      return;
+    }
+    
     // if isOn = false, re-ticked automatically after 500ms
     // if (!isOn) {
     const timeOutId = setTimeout(() => {
